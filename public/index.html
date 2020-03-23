@@ -8,18 +8,28 @@
 </head>
 
 <body ng-controller="BlogsController as ctrl">
-
+<header>
     <h1>Blog Wars</h1>
-
-    <form ng-submit="">
-
+</header>
+<main>
+    <form ng-submit="">  
         Title:
         <input type="text" ng-model="ctrl.title">
-
+        
         <br>
         Description:
         <input type="text" ng-model="ctrl.description">
     </form>
-    
+</main>
+
+
+<footer>
+    <div>
+       <h4>
+        The Alpha Team: Clayton (Owner) , Genaro (Contributor), Alex (contributor)
+       </h4> 
+    </div>
+</footer>
+
 </body>
 </html>
