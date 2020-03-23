@@ -5,3 +5,4 @@ Can we make this blog last?
 Contributors:
 
 Clayton O'Neill - Owner
+Genaro Sanchez - Random Guy
