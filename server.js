@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 
 mongoose.connect(
-    'mongodb://localhost:27017/' + dbCollection,
+    'mongodb://localhost:27017/blog'
     (req,res)=>{
         console.log('Blog Wars Have Begun')
     }
