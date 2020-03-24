@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/css/main.css">
 </head>
 
-<body ng-controller="BlogsController as ctrl">
+<body ng-controller="BlogsController as ctrl" class="flex-col center">
 
     <header>
         <h1>Blog Wars</h1>
@@ -40,7 +40,7 @@
 
     <form
       ng-if="$index === ctrl.editIndex"
-      ng-submit="ctrl.updateBlog(blog)" />
+      ng-submit="ctrl.updateBlog(blog)">
       <input type="text" ng-model="ctrl.updatedTitle" />
       <input type="text" ng-model="ctrl.updatedDescription" />
       <input type="submit" value="Update this entry">
