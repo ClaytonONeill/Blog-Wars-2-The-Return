@@ -57,13 +57,13 @@ app.controller('BlogsController', ['$http', function ($http) {
 
     // EDIT BLOGS
     this.updateBlog=(blog)=>{
-        blog = req.body;
-
+        console.log('this works');
         $http({
             method:'PUT',
-            url:'/blogs/'+id,
+            url:'/blogs/'+ blog._id,
             data:{
-                title:blog.title
+                title: this.updatedTitle,
+                description: this.updatedDescription
             }
         }).then(
             (response)=>{
@@ -72,6 +72,7 @@ app.controller('BlogsController', ['$http', function ($http) {
         )
     }
 
+console.log(this.editIndex);
 
 
     // End -------------------------------------------
