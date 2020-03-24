@@ -64,13 +64,13 @@ app.controller('BlogsController', ['$http', function ($http) {
             url:'/blogs/'+ blog._id,
             data: {
                 title: this.updatedTitle,
-                description: blog.description
+                description: this.updatedDescription
           }
           }).then(
               (response)=>{
                   console.log(response.data);
 
-                  this.updatedBlog.push(response.data)
+                  this.updatedBlog.splice(0, 1, response.data)
 
 // push the new response data into the array
 
@@ -90,7 +90,6 @@ app.controller('BlogsController', ['$http', function ($http) {
               }
           )
     }
-    console.log(this.editIndex);
 
     // SHOW BLOGS
     this.showBlog = (blog) =>{
