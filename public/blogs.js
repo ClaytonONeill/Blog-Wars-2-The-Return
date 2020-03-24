@@ -20,6 +20,7 @@ app.controller('BlogsController', ['$http', function ($http) {
             url:'/blogs'
         }).then(
             (response)=>{
+                console.log(response.data);
                 this.blogs.push(response.data);
             }
         )
