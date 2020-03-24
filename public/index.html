@@ -47,8 +47,14 @@
             <h3 ng-dblclick="ctrl.deleteBlog(blog._id)" ng-click="ctrl.showBlog(blog)">{{blog.title}}</h3>
             <button type="button" ng-click="ctrl.editIndex = $index">Edit this entry</button>
             <p>{{blog.description}}</p>
+            <form ng-submit="ctrl.updateBlog(blog)">
+              <input type="text" ng-model="ctrl.updatedTitle" />
+              <input type="text" ng-model="ctrl.updatedDescription" />
+              <input type="submit" value="Update this entry">
+            </form>
         </div>
 
+<<<<<<< HEAD
     <form
       ng-if="$index === ctrl.editIndex"
       ng-submit="ctrl.updateBlog(blog)">
@@ -57,6 +63,8 @@
       <input type="submit" value="Update this entry">
     </form>
 <!-- END MAIN -->
+=======
+>>>>>>> 7cca8b77e7017814dca9ea9e3f4149bed4ab880d
     </main>
 
 
