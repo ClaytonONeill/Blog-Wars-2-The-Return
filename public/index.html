@@ -29,7 +29,7 @@
         <input id="inbtn" type="submit" value="Add New">
     </form>
 
-    <div ng-repeat="blog in ctrl.blogs">
+    <div ng-repeat="blog in ctrl.blogs" class="flex-col dark">
         <h3 ng-dblclick="ctrl.deleteBlog(blog._id)">{{blog.title}}</h3>
         <p>{{blog.description}}</p>
     </div>
