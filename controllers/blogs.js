@@ -6,37 +6,49 @@ const Blogs = require('../models/blogs.js');
 // INDEX ROUTE
 // ========================
 
-router.get('/', (req,res) => {
-  Blogs.find({}, (error, foundBlog) => {
-    res.json(foundBlog)
-  })
-})
+router.get('/', async (req,res) => {
+  try {
+    const blogs = await Blogs.find()
+    res.status(200).json(blogs)
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
+});
 
 // CREATE ROUTE
 // ========================
 
-router.post('/', (req,res) => {
-  Blogs.create(req.body, (err,createdBlog) => {
-    res.json(createdBlog)
-  })
-})
+router.post('/', async (req,res) => {
+  try {
+   const newBlog = await Blogs.create(req.body)
+    res.status(200).json(newBlog)
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
+});
 
 // DELETE ROUTE
 // ========================
 
-router.delete('/:id', (req, res) => {
-  Blogs.findByIdAndRemove(req.params.id, (error, deletedBlog) => {
-    res.json(deletedBlog)
-  })
+router.delete('/:id', async (req, res) => {
+  try {
+    const deletedBlog = await Blogs.findByIdAndRemove(req.params.id)
+    res.status(200).json(deletedBlog)
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
 })
 
 // UPDATE ROUTE
 // ========================
 
-router.put('/:id', (req, res) => {
-  Blogs.findByIdAndUpdate(req.params.id, req.body, {new: true}, (error, updatedBlog) => {
-    res.json(updatedBlog)
-  })
+router.put('/:id', async (req, res) => {
+  try {
+    const updatedBlog = Blogs.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    res.status(200).json(updatedBlog)
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
 })
 
 
