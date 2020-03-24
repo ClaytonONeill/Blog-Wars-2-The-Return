@@ -30,7 +30,7 @@
     </form>
 
     <div ng-repeat="blog in ctrl.blogs">
-        <h3 ng-dblclick="ctrl.deleteBlog(blog.id)">{{blog.title}}</h3>
+        <h3 ng-dblclick="ctrl.deleteBlog(blog._id)">{{blog.title}}</h3>
         <p>{{blog.description}}</p>
     </div>
 
