@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/css/main.css">
 </head>
 
-<body ng-controller="BlogsController as ctrl">
+<body ng-controller="BlogsController as ctrl" class="flex-col center">
 
     <header>
         <h1>Blog Wars</h1>
@@ -23,7 +23,6 @@
                 <h3>Title:</h3>
                 <input type="text" ng-model="ctrl.postBlog.title" placeholder="Title">
             </div>
-            <br>
             <div class="flex-row">
                 <h3>Description:</h3>
                 <input type="text" ng-model="ctrl.postBlog.description" placeholder="Description">
@@ -33,7 +32,7 @@
             <input id="inbtn" type="submit" value="Add New">
         </form>
 
-        <div ng-repeat="blog in ctrl.blogs" class="flex-col dark">
+        <div ng-repeat="blog in ctrl.blogs" class="flex-col dark card p10 m10">
             <h3 ng-dblclick="ctrl.deleteBlog(blog._id)">{{blog.title}}</h3>
             <button type="button" ng-click="ctrl.editIndex = $index">Edit this entry</button>
             <p>{{blog.description}}</p>
@@ -44,7 +43,13 @@
             </form>
         </div>
 
-
+    <form
+      ng-if="$index === ctrl.editIndex"
+      ng-submit="ctrl.updateBlog(blog)">
+      <input type="text" ng-model="ctrl.updatedTitle" />
+      <input type="text" ng-model="ctrl.updatedDescription" />
+      <input type="submit" value="Update this entry">
+    </form>
 
     </main>
 
