@@ -22,6 +22,7 @@ app.controller('BlogsController', ['$http', function ($http) {
             (response)=>{
                 console.log(response.data);
                 this.blogs.push(response.data);
+                this.createBlog.title='';
             }
         )
     }
