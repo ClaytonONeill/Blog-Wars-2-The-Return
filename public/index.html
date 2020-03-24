@@ -38,9 +38,13 @@
             <p>{{blog.description}}</p>
         </div>
 
-        <form ng-if="$index === ctrl.editIndex">
-
-        </form>
+    <form
+      ng-if="$index === ctrl.editIndex"
+      ng-submit="ctrl.updateBlog(blog)" />
+      <input type="text" ng-model="ctrl.updatedTitle" />
+      <input type="text" ng-model="ctrl.updatedDescription" />
+      <input type="submit" value="Update this entry">
+    </form>
 
     </main>
 
