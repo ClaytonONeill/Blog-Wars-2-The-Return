@@ -23,7 +23,7 @@
 
         Description:
         <input type="text" ng-model="ctrl.postBlog.description" placeholder="Description">
-        
+
         <br>
 
         <input id="inbtn" type="submit" value="Add New">
@@ -31,8 +31,13 @@
 
     <div ng-repeat="blog in ctrl.blogs">
         <h3 ng-dblclick="ctrl.deleteBlog(blog._id)">{{blog.title}}</h3>
+        <button type="button" ng-click="ctrl.editIndex = $index">Edit this entry</button>
         <p>{{blog.description}}</p>
     </div>
+
+    <form ng-if="$index === ctrl.editIndex">
+        
+    </form>
 
 </main>
 
