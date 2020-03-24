@@ -10,6 +10,8 @@ app.controller('BlogsController', ['$http', function ($http) {
 
     this.updatedBlog = [];
 
+    this.editIndex;
+
     const controller = this;
 
     // =========== ROUTES =================//
