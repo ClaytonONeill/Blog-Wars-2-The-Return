@@ -1,7 +1,7 @@
-const moongoose = require("mongoose")
+const mongoose = require("mongoose")
 
-cosnt blogSchema = mongoose.Schema({
-  title:  String,
+const blogSchema = new mongoose.Schema({
+  title:  {type:String, required:true},
   description: String
 })
 

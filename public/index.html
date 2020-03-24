@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="blogs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js" charset="utf-8"></script>
+    <script src="blogs.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body ng-controller="BlogsController as ctrl">
+
+    <header>
+        <h1>Blog Wars</h1>
+    </header>
+
+    <main class="flex-col center">
+<!-- START MAIN -->
+        <!-- POST A BLOG ENTRY -->
+        <form ng-submit="ctrl.createBlog()" class="flex-col center"><br />
+            <!-- Title -->
+            <div class="flex-row">
+                <h3>Title:</h3>
+                <input type="text" ng-model="ctrl.postBlog.title" placeholder="Title">
+            </div>
+            <!-- Description -->
+            <div class="flex-row">
+                <h3>Description:</h3>
+                <input type="text" ng-model="ctrl.postBlog.description" placeholder="Description">
+            </div>
+            <br>
+                <!--  Submit -->
+            <input id="inbtn" type="submit" value="Add New">
+        </form>
+
+        <!-- SHOW ROUTE BOX -->
+        <div>
+            <h3>Blog Info:</h3>
+            <hr>
+            <h4>{{ctrl.blog.title}}</h4>
+            <p>{{ctrl.blog.description}}</p>
+        </div>
+
+        <div ng-repeat="blog in ctrl.blogs" class="flex-col dark p10 m10 half center">
+            <h3 ng-dblclick="ctrl.deleteBlog(blog._id)" ng-click="ctrl.showBlog(blog)">{{blog.title}}</h3>
+            <button type="button" ng-click="ctrl.editIndex = $index">Edit this entry</button>
+            <p>{{blog.description}}</p>
+            <form
+              ng-if="ctrl.editIndex === $index"
+              ng-submit="ctrl.updateBlog(blog)">
+              <input type="text" ng-model="ctrl.updatedTitle" />
+              <input type="text" ng-model="ctrl.updatedDescription" />
+              <input type="submit" value="Update this entry">
+            </form>
+        </div>
+    </main>
+
+
+    <footer>
+        <div>
+            <h4>
+                The Alpha Team: Clayton (Owner) , Genaro (Contributor), Alex (contributor)
+            </h4>
+        </div>
+    </footer>
+
+</body>
+
+</html>
