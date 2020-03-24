@@ -8,7 +8,7 @@ app.controller('BlogsController', ['$http', function ($http) {
     this.postBlog = {};
     this.blogs = [];
 
-    this.editIndex;
+    this.updatedBlog = [];
 
     const controller = this;
 
@@ -60,15 +60,21 @@ app.controller('BlogsController', ['$http', function ($http) {
         console.log(blog);
         console.log(this.updatedTitle);
           $http({
-          method:'PUT',
-          url:'/blogs/'+ blog._id,
-          data:{
-              title: this.updatedTitle
-              description: this.updatedDescription
+            method:'PUT',
+            url:'/blogs/'+ blog._id,
+            data: {
+                title: this.updatedTitle,
+                description: blog.description
           }
           }).then(
               (response)=>{
-                  console.log(response.data)
+                  console.log(response.data);
+                  this.updatedBlog.push(response.data)
+                  blogSwitch = this.updatedBlog[0]
+                  console.log(blogSwitch);
+
+                  const updateByIndex = this.blogs.findIndex(blogs => blogs._id === blog._id);
+                  this.blogs.splice(updateByIndex, 1, blogSwitch)
               }
           )
     }

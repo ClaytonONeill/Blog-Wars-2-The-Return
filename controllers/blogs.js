@@ -44,7 +44,7 @@ router.delete('/:id', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   try {
-    const updatedBlog = Blogs.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    const updatedBlog = await Blogs.findByIdAndUpdate(req.params.id, req.body, {new: true})
     res.status(200).json(updatedBlog)
   } catch (error) {
     res.status(400).json({error: error.message})
