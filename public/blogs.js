@@ -56,22 +56,6 @@ app.controller('BlogsController', ['$http', function ($http) {
     }
 
     // EDIT BLOGS
-<<<<<<< HEAD
-    this.updateBlog = (blog) => {
-        console.log('this works');
-        $http({
-            method: 'PUT',
-            url: '/blogs/' + blog._id,
-            data: {
-                title: this.updatedTitle,
-                description: this.updatedDescription
-            }
-        }).then(
-            (response) => {
-                console.log(response.data)
-            }
-        )
-=======
     this.updateBlog = (blog)=>{
         console.log(blog);
         console.log(this.updatedTitle);
@@ -105,17 +89,12 @@ app.controller('BlogsController', ['$http', function ($http) {
 // information
               }
           )
->>>>>>> 7cca8b77e7017814dca9ea9e3f4149bed4ab880d
     }
     console.log(this.editIndex);
 
-<<<<<<< HEAD
     // SHOW BLOGS
-    this.showBlog = (blog) =>
+    this.showBlog = (blog) =>{
         this.blog = blog;
-=======
-
->>>>>>> 7cca8b77e7017814dca9ea9e3f4149bed4ab880d
-
+}
     // End -------------------------------------------
 }])
