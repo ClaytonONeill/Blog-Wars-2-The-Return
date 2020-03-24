@@ -56,23 +56,23 @@ app.controller('BlogsController', ['$http', function ($http) {
     }
 
     // EDIT BLOGS
-    this.updateBlog=(blog)=>{
-        console.log('this works');
-        $http({
-            method:'PUT',
-            url:'/blogs/'+ blog._id,
-            data:{
-                title: this.updatedTitle,
-                description: this.updatedDescription
-            }
-        }).then(
-            (response)=>{
-                console.log(response.data)
-            }
-        )
+    this.updateBlog = (blog)=>{
+        console.log(blog);
+        console.log(this.updatedTitle);
+          $http({
+          method:'PUT',
+          url:'/blogs/'+ blog._id,
+          data:{
+              title: this.updatedTitle
+              description: this.updatedDescription
+          }
+          }).then(
+              (response)=>{
+                  console.log(response.data)
+              }
+          )
     }
 
-console.log(this.editIndex);
 
 
     // End -------------------------------------------
