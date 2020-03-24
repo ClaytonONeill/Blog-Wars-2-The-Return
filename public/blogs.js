@@ -69,12 +69,24 @@ app.controller('BlogsController', ['$http', function ($http) {
           }).then(
               (response)=>{
                   console.log(response.data);
+
                   this.updatedBlog.push(response.data)
+
+// push the new response data into the array
+
                   blogSwitch = this.updatedBlog[0]
+
+// set a variable to the new response data for easy typing
                   console.log(blogSwitch);
 
                   const updateByIndex = this.blogs.findIndex(blogs => blogs._id === blog._id);
+
+// find the index of what you want you want to edit
+
                   this.blogs.splice(updateByIndex, 1, blogSwitch)
+
+// replace the old information in the array with your new
+// information
               }
           )
     }
