@@ -5,7 +5,7 @@ app.controller('BlogsController', ['$http', function ($http) {
     // Start Controller ------------------------------
     this.title = "";
     this.description = "";
-    this.createBlog = {};
+    this.postBlog = {};
     this.blogs = [];
 
     const controller = this;
@@ -16,13 +16,13 @@ app.controller('BlogsController', ['$http', function ($http) {
     this.createBlog = () => {
         $http({
             method: 'POST',
-            data: this.createBlog,
+            data: this.postBlog,
             url:'/blogs'
         }).then(
             (response)=>{
                 console.log(response.data);
                 this.blogs.push(response.data);
-                this.createBlog.title='';
+                this.postBlog.title='';
             }
         )
     }
@@ -44,7 +44,7 @@ app.controller('BlogsController', ['$http', function ($http) {
     this.deleteBlog = (id)=>{
         $http({
             method:'DELETE',
-            url:'/blogs'+id
+            url:'/blogs/'+id
         }).then(
             (response)=>{
                 const removeByIndex = this.blogs.findIndex(blogs=> blogs._id ===id);
@@ -59,7 +59,7 @@ app.controller('BlogsController', ['$http', function ($http) {
 
         $http({
             method:'PUT',
-            url:'/blogs'+id,
+            url:'/blogs/'+id,
             data:{
                 title:blog.title
             }
