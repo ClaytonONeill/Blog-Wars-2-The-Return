@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="/css/main.css">
 </head>
 
-<body ng-controller="BlogsController as ctrl" class="flex-col center">
+<body ng-controller="BlogsController as ctrl">
 
     <header>
         <h1>Blog Wars</h1>
     </header>
 
-    <main>
+    <main class="flex-col center">
 <!-- START MAIN -->
         <!-- POST A BLOG ENTRY -->
         <form ng-submit="ctrl.createBlog()" class="flex-col center"><br />
@@ -43,7 +43,7 @@
             <p>{{ctrl.blog.description}}</p>
         </div>
 
-        <div ng-repeat="blog in ctrl.blogs" class="flex-col dark card p10 m10">
+        <div ng-repeat="blog in ctrl.blogs" class="flex-col dark p10 m10 half center">
             <h3 ng-dblclick="ctrl.deleteBlog(blog._id)" ng-click="ctrl.showBlog(blog)">{{blog.title}}</h3>
             <button type="button" ng-click="ctrl.editIndex = $index">Edit this entry</button>
             <p>{{blog.description}}</p>
@@ -53,6 +53,7 @@
               <input type="submit" value="Update this entry">
             </form>
         </div>
+
 
     <form
       ng-if="$index === ctrl.editIndex"
