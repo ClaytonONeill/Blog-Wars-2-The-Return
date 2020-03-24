@@ -19,61 +19,63 @@ app.controller('BlogsController', ['$http', function ($http) {
         $http({
             method: 'POST',
             data: this.postBlog,
-            url:'/blogs'
+            url: '/blogs'
         }).then(
-            (response)=>{
+            (response) => {
                 console.log(response.data);
                 this.blogs.push(response.data);
-                this.postBlog.title='';
+                this.postBlog.title = '';
             }
         )
     }
 
     // GET REQUEST TO POPULATE BLOGS
-    this.getBlog = ()=>{
+    this.getBlog = () => {
         $http({
-            method:'GET',
-            url:'/blogs'
+            method: 'GET',
+            url: '/blogs'
         }).then(
-            (response)=>{
-                this.blogs=response.data
+            (response) => {
+                this.blogs = response.data
             }
         )
     }
     this.getBlog();
 
     // DELETE BLOG ---- *** SUPER IMPORTANT ***
-    this.deleteBlog = (id)=>{
+    this.deleteBlog = (id) => {
         $http({
-            method:'DELETE',
-            url:'/blogs/'+id
+            method: 'DELETE',
+            url: '/blogs/' + id
         }).then(
-            (response)=>{
-                const removeByIndex = this.blogs.findIndex(blogs=> blogs._id ===id);
-                this.blogs.splice(removeByIndex,1);
+            (response) => {
+                const removeByIndex = this.blogs.findIndex(blogs => blogs._id === id);
+                this.blogs.splice(removeByIndex, 1);
             }
         )
     }
 
     // EDIT BLOGS
-    this.updateBlog=(blog)=>{
+    this.updateBlog = (blog) => {
         console.log('this works');
         $http({
-            method:'PUT',
-            url:'/blogs/'+ blog._id,
-            data:{
+            method: 'PUT',
+            url: '/blogs/' + blog._id,
+            data: {
                 title: this.updatedTitle,
                 description: this.updatedDescription
             }
         }).then(
-            (response)=>{
+            (response) => {
                 console.log(response.data)
             }
         )
     }
+    console.log(this.editIndex);
 
-console.log(this.editIndex);
-
+    // SHOW BLOGS
+    this.showBlog = (blog) =>
+        this.blog = blog;
 
     // End -------------------------------------------
 }])

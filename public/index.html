@@ -17,23 +17,34 @@
     </header>
 
     <main>
-
+<!-- START MAIN -->
+        <!-- POST A BLOG ENTRY -->
         <form ng-submit="ctrl.createBlog()" class="flex-col center"><br />
+            <!-- Title -->
             <div class="flex-row">
                 <h3>Title:</h3>
                 <input type="text" ng-model="ctrl.postBlog.title" placeholder="Title">
             </div>
+            <!-- Description -->
             <div class="flex-row">
                 <h3>Description:</h3>
                 <input type="text" ng-model="ctrl.postBlog.description" placeholder="Description">
             </div>
             <br>
-
+                <!--  Submit -->
             <input id="inbtn" type="submit" value="Add New">
         </form>
 
+        <!-- SHOW ROUTE BOX -->
+        <div>
+            <h3>Blog Info:</h3>
+            <hr>
+            <h4>{{ctrl.blog.title}}</h4>
+            <p>{{ctrl.blog.description}}</p>
+        </div>
+
         <div ng-repeat="blog in ctrl.blogs" class="flex-col dark card p10 m10">
-            <h3 ng-dblclick="ctrl.deleteBlog(blog._id)">{{blog.title}}</h3>
+            <h3 ng-dblclick="ctrl.deleteBlog(blog._id)" ng-click="ctrl.showBlog(blog)">{{blog.title}}</h3>
             <button type="button" ng-click="ctrl.editIndex = $index">Edit this entry</button>
             <p>{{blog.description}}</p>
         </div>
@@ -45,7 +56,7 @@
       <input type="text" ng-model="ctrl.updatedDescription" />
       <input type="submit" value="Update this entry">
     </form>
-
+<!-- END MAIN -->
     </main>
 
 
