@@ -16,16 +16,19 @@
 </header>
 
 <main>
-    <form  ng-submit="ctrl.createBlog()"><br/>
-        Title:
-        <input type="text" ng-model="ctrl.postBlog.title" placeholder="Title">
+    <form  ng-submit="ctrl.createBlog()" class="half"><br/>
+        <div class="flex-row">
+            <h3>Title:</h3>
+            <input type="text" ng-model="ctrl.postBlog.title" placeholder="Title">
+        </div>
         <br>
-
-        Description:
-        <input type="text" ng-model="ctrl.postBlog.description" placeholder="Description">
-
+        
+        <div>
+            <h3>Description:</h3>
+            <input type="text" ng-model="ctrl.postBlog.description" placeholder="Description">
+        </div>
         <br>
-
+        
         <input id="inbtn" type="submit" value="Add New">
     </form>
 
