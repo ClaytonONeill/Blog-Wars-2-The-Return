@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js" charset="utf-8"></script>
+    <script src="blogs.js"></script>
 <link rel="stylesheet" href="/css/main.css">
-
 </head>
 
 <body ng-controller="BlogsController as ctrl">
@@ -18,12 +19,22 @@
     <form ng-submit="ctrl.createBlog()">
         Title:
         <input type="text" ng-model="ctrl.title" placeholder="Title">
-
+        
         <br>
+        
         Description:
         <input type="text" ng-model="ctrl.description" placeholder="Description">
-        <input id="inbtn" type="submit" value="Add New">
+        
+        <br>
+        
+        <input type="submit" value="Add New">
     </form>
+
+    <div ng-repeat="blog in ctrl.blogs">
+        <h3 ng-dblclick="ctrl.deleteBlog(blog.id)">{{blog.title}}</h3>
+        <p>{{blog.description}}</p>
+    </div>
+
 </main>
 
 
