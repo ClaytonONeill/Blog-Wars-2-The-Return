@@ -1,33 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="blogs">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js" charset="utf-8"></script>
     <script src="blogs.js"></script>
-<link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 
 <body ng-controller="BlogsController as ctrl">
 
-<header>
-    <h1>Blog Wars</h1>
-</header>
+    <header>
+        <h1>Blog Wars</h1>
+    </header>
 
-<main>
-    <form  ng-submit="ctrl.createBlog()"><br/>
-        Title:
-        <input type="text" ng-model="ctrl.postBlog.title" placeholder="Title">
-        <br>
+    <main>
 
-        Description:
-        <input type="text" ng-model="ctrl.postBlog.description" placeholder="Description">
+        <form ng-submit="ctrl.createBlog()" class="flex-col center"><br />
+            <div class="flex-row">
+                <h3>Title:</h3>
+                <input type="text" ng-model="ctrl.postBlog.title" placeholder="Title">
+            </div>
+            <br>
+            <div class="flex-row">
+                <h3>Description:</h3>
+                <input type="text" ng-model="ctrl.postBlog.description" placeholder="Description">
+            </div>
+            <br>
 
-        <br>
+            <input id="inbtn" type="submit" value="Add New">
+        </form>
 
-        <input id="inbtn" type="submit" value="Add New">
-    </form>
+        <div ng-repeat="blog in ctrl.blogs" class="flex-col dark">
+            <h3 ng-dblclick="ctrl.deleteBlog(blog._id)">{{blog.title}}</h3>
+            <button type="button" ng-click="ctrl.editIndex = $index">Edit this entry</button>
+            <p>{{blog.description}}</p>
+        </div>
 
     <div ng-repeat="blog in ctrl.blogs">
         <h3 ng-dblclick="ctrl.deleteBlog(blog._id)">{{blog.title}} {{$index}}</h3>
@@ -43,16 +53,17 @@
       <input type="submit" value="Update this entry">
     </form>
 
-</main>
+    </main>
 
 
-<footer>
-    <div>
-       <h4>
-        The Alpha Team: Clayton (Owner) , Genaro (Contributor), Alex (contributor)
-       </h4>
-    </div>
-</footer>
+    <footer>
+        <div>
+            <h4>
+                The Alpha Team: Clayton (Owner) , Genaro (Contributor), Alex (contributor)
+            </h4>
+        </div>
+    </footer>
 
 </body>
+
 </html>
